@@ -43,4 +43,15 @@ export default [
       },
     },
   },
+  // Prettier integration
+  {
+    plugins: {
+      prettier: (await import('eslint-plugin-prettier')).default,
+    },
+    rules: {
+      'prettier/prettier': 'error',
+    },
+  },
+  // Disable conflicting rules
+  (await import('eslint-config-prettier')).default,
 ]

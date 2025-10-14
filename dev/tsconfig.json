@@ -19,17 +19,23 @@
       "@payload-config": [
         "./payload.config.ts"
       ],
-      "payload-wordcount": [
+      "@compatis/payload-charcount": [
         "../src/index.ts"
       ],
-      "payload-wordcount/client": [
-        "../src/exports/client.ts"
+      "@compatis/payload-charcount/components": [
+        "../src/exports/components.ts"
       ],
-      "payload-wordcount/rsc": [
-        "../src/exports/rsc.ts"
+      "@compatis/payload-charcount/fields": [
+        "../src/exports/fields.ts"
       ]
     },
     "noEmit": true,
     "emitDeclarationOnly": false,
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
   }
 }

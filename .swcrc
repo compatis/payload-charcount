@@ -5,8 +5,7 @@
     "target": "esnext",
     "parser": {
       "syntax": "typescript",
-      "tsx": true,
-      "dts": true
+      "tsx": true
     },
     "transform": {
       "react": {

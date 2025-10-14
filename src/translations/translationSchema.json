@@ -1,0 +1,55 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "additionalProperties": false,
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "plugin-charcount": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "almostGood": {
+          "type": "string"
+        },
+        "characterCount": {
+          "type": "string"
+        },
+        "charactersLeftOver": {
+          "type": "string"
+        },
+        "charactersToGo": {
+          "type": "string"
+        },
+        "charactersTooMany": {
+          "type": "string"
+        },
+        "good": {
+          "type": "string"
+        },
+        "missing": {
+          "type": "string"
+        },
+        "tooLong": {
+          "type": "string"
+        },
+        "tooShort": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "almostGood",
+        "characterCount",
+        "charactersLeftOver",
+        "charactersToGo",
+        "charactersTooMany",
+        "good",
+        "missing",
+        "tooLong",
+        "tooShort"
+      ]
+    }
+  },
+  "required": ["plugin-charcount"]
+}

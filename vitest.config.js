@@ -17,9 +17,20 @@ export default defineConfig(() => {
       }),
     ],
     test: {
-      environment: 'node',
       hookTimeout: 30_000,
       testTimeout: 30_000,
+      exclude: ['**/e2e.spec.ts', '**/node_modules/**', 'dev/**'],
+      projects: [
+        {
+          name: 'node',
+          environment: 'node',
+        },
+        {
+          name: 'jsdom',
+          environment: 'jsdom',
+          include: ['**/components/**/*.test.{ts,tsx}', '**/components/**/*.spec.{ts,tsx}'],
+        },
+      ],
     },
   }
 })

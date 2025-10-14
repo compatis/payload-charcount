@@ -1,35 +1,62 @@
 {
-  "name": "payload-wordcount",
+  "name": "@compatis/payload-charcount",
   "version": "1.0.0",
-  "description": "A blank template to get started with Payload 3.0",
+  "description": "A Payload CMS plugin that counts characters in richtext, textarea and text fields fields, similar to the SEO plugin characters counter. Useful for editors to track content length.",
   "license": "MIT",
   "type": "module",
   "exports": {
     ".": {
-      "import": "./src/index.ts",
-      "types": "./src/index.ts",
-      "default": "./src/index.ts"
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
     },
-    "./client": {
-      "import": "./src/exports/client.ts",
-      "types": "./src/exports/client.ts",
-      "default": "./src/exports/client.ts"
+    "./components": {
+      "import": "./dist/exports/components.js",
+      "types": "./dist/exports/components.d.ts",
+      "default": "./dist/exports/components.js"
     },
-    "./rsc": {
-      "import": "./src/exports/rsc.ts",
-      "types": "./src/exports/rsc.ts",
-      "default": "./src/exports/rsc.ts"
+    "./fields": {
+      "import": "./dist/exports/fields.js",
+      "types": "./dist/exports/fields.d.ts",
+      "default": "./dist/exports/fields.js"
     }
   },
-  "main": "./src/index.ts",
-  "types": "./src/index.ts",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "files": [
     "dist"
+  ],
+  "sideEffects": false,
+  "packageManager": "pnpm@10.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/compatis/payload-charcount.git"
+  },
+  "bugs": {
+    "url": "https://github.com/compatis/payload-charcount/issues"
+  },
+  "homepage": "https://github.com/compatis/payload-charcount#readme",
+  "keywords": [
+    "payload",
+    "payloadcms",
+    "payload-cms",
+    "payload-plugin",
+    "plugin",
+    "charcount",
+    "charcounter",
+    "character-count",
+    "character-counter",
+    "content-length",
+    "editor",
+    "richtext",
+    "lexical",
+    "textarea",
+    "text"
   ],
   "scripts": {
     "build": "pnpm copyfiles && pnpm build:types && pnpm build:swc",
     "build:swc": "swc ./src -d ./dist --config-file .swcrc --strip-leading-paths",
-    "build:types": "tsc --outDir dist --rootDir ./src",
+    "build:types": "tsc --emitDeclarationOnly --outDir dist --rootDir ./src",
     "clean": "rimraf {dist,*.tsbuildinfo}",
     "copyfiles": "copyfiles -u 1 \"src/**/*.{html,css,scss,ttf,woff,woff2,eot,svg,jpg,png,json}\" dist/",
     "dev": "next dev dev --turbo",
@@ -38,15 +65,16 @@
     "dev:payload": "cross-env PAYLOAD_CONFIG_PATH=./dev/payload.config.ts payload",
     "generate:importmap": "pnpm dev:generate-importmap",
     "generate:types": "pnpm dev:generate-types",
-    "lint": "eslint",
+    "lint": "eslint ./src",
     "lint:fix": "eslint ./src --fix",
     "prepublishOnly": "pnpm clean && pnpm build",
     "test": "pnpm test:int && pnpm test:e2e",
     "test:e2e": "playwright test",
-    "test:int": "vitest"
+    "test:int": "vitest",
+    "prepare": "npm run build"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3.2.0",
+    "@eslint/eslintrc": "^3.3.1",
     "@payloadcms/db-mongodb": "3.37.0",
     "@payloadcms/db-postgres": "3.37.0",
     "@payloadcms/db-sqlite": "3.37.0",
@@ -54,38 +82,43 @@
     "@payloadcms/next": "3.37.0",
     "@payloadcms/richtext-lexical": "3.37.0",
     "@payloadcms/ui": "3.37.0",
-    "@playwright/test": "^1.52.0",
+    "@playwright/test": "^1.56.0",
     "@swc-node/register": "1.10.9",
     "@swc/cli": "0.6.0",
-    "@types/node": "^22.5.4",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.0",
+    "@types/node": "^22.18.10",
     "@types/react": "19.1.8",
     "@types/react-dom": "19.1.6",
     "copyfiles": "2.4.1",
     "cross-env": "^7.0.3",
-    "eslint": "^9.23.0",
+    "eslint": "^9.37.0",
     "eslint-config-next": "15.4.4",
-    "graphql": "^16.8.1",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.4",
+    "graphql": "^16.11.0",
+    "jsdom": "^27.0.0",
     "mongodb-memory-server": "10.1.4",
     "next": "15.4.4",
-    "open": "^10.1.0",
+    "open": "^10.2.0",
     "payload": "3.37.0",
-    "prettier": "^3.4.2",
+    "prettier": "^3.6.2",
     "qs-esm": "7.0.2",
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "rimraf": "3.0.2",
+    "rimraf": "^5.0.10",
     "sharp": "0.34.2",
-    "sort-package-json": "^2.10.0",
+    "sort-package-json": "^2.15.1",
     "typescript": "5.7.3",
     "vite-tsconfig-paths": "^5.1.4",
-    "vitest": "^3.1.2"
+    "vitest": "^3.2.4"
   },
   "peerDependencies": {
     "payload": "^3.37.0"
   },
   "engines": {
     "node": "^18.20.2 || >=20.9.0",
-    "pnpm": "^9 || ^10"
+    "pnpm": "^8 || ^9 || ^10"
   },
   "publishConfig": {
     "exports": {
@@ -94,19 +127,21 @@
         "types": "./dist/index.d.ts",
         "default": "./dist/index.js"
       },
-      "./client": {
-        "import": "./dist/exports/client.js",
-        "types": "./dist/exports/client.d.ts",
-        "default": "./dist/exports/client.js"
+      "./components": {
+        "import": "./dist/exports/components.js",
+        "types": "./dist/exports/components.d.ts",
+        "default": "./dist/exports/components.js"
       },
-      "./rsc": {
-        "import": "./dist/exports/rsc.js",
-        "types": "./dist/exports/rsc.d.ts",
-        "default": "./dist/exports/rsc.js"
+      "./fields": {
+        "import": "./dist/exports/fields.js",
+        "types": "./dist/exports/fields.d.ts",
+        "default": "./dist/exports/fields.js"
       }
     },
     "main": "./dist/index.js",
-    "types": "./dist/index.d.ts"
+    "types": "./dist/index.d.ts",
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   },
   "pnpm": {
     "onlyBuiltDependencies": [
@@ -116,5 +151,7 @@
     ]
   },
   "registry": "https://registry.npmjs.org/",
-  "dependencies": {}
+  "dependencies": {
+    "@payloadcms/translations": "^3.59.1"
+  }
 }

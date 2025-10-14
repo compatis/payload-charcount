@@ -47,3 +47,13 @@ yarn-error.log*
 /playwright-report/
 /blob-report/
 /playwright/.cache/
+
+# IDE
+/.cursor
+/.vscode
+
+# Package
+*.tgz
+
+# DB
+/dev/payload.db

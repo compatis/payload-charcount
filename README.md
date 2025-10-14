@@ -107,33 +107,6 @@ The plugin includes translations for 40+ languages.
 - Node.js 18.20.2+ or 20.9.0+
 - TypeScript (recommended)
 
-<<<<<<< Updated upstream
-## License
-
-MIT
-
-## Support
-
-If you have any questions or issues, please open an issue on GitHub.
-
-## Roadmap
-
-### v1.1.0 (Coming Soon)
-
-- [ ] **Optional min/max** - Only one of min or max required, not both
-- [ ] **Helper text** - Optional hint text below counter (like Payload SEO plugin)
-
-### Future Ideas
-
-- [ ] **Word counting** - Count words instead of characters
-- [ ] **Custom validation messages** - Personalized texts
-
-**Have a feature request?** [Open an issue](https://github.com/compatis/payload-charcount/issues) and let us know!
-
-## Acknowledgments
-
-Special thanks to the [Payload CMS](https://payloadcms.com) team for creating such an amazing headless CMS and for the inspiration and translations from their SEO plugin's character counting functionality.
-
 ## Support
 
 If you have any questions or issues, please open an issue on GitHub.

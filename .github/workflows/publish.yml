@@ -28,6 +28,7 @@ jobs:
         with:
           node-version: 20
           registry-url: 'https://registry.npmjs.org/'
+          scope: '@compatis'
 
       - name: Print pnpm & npm versions (sanity)
         run: |
@@ -57,20 +58,12 @@ jobs:
             exit 1
           fi
 
-      - name: Configure npm auth
-        run: |
-          echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
-          npm config set //registry.npmjs.org/:_authToken=\$\{NPM_TOKEN\}
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      - name: Verify npm auth wiring
+      - name: Verify npm auth
         run: |
           npm config get registry
-          npm whoami || true
+          npm whoami
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Run tests
         run: pnpm test || echo "Some tests may have failed - continuing with build"

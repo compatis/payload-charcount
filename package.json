@@ -1,6 +1,6 @@
 {
   "name": "@compatis/payload-charcount",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A Payload CMS plugin that counts characters in richtext, textarea and text fields fields, similar to the SEO plugin characters counter. Useful for editors to track content length.",
   "license": "MIT",
   "type": "module",
